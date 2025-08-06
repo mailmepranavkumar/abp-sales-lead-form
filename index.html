@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Lead Form - ABP Network</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a modern look */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Basic styling for the body to center the form */
+        body {
+            display: flex;
+            justify-content.center;
+            align-items: center;
+            min-height: 100vh;
+            /* Using the provided background image */
+            background: url('http://googleusercontent.com/file_content/3') no-repeat center center fixed;
+            background-size: cover; /* Ensure the background covers the entire area */
+            padding: 1rem; /* Add some padding for smaller screens */
+        }
+        /* Hide the loading spinner by default */
+        #loadingSpinner {
+            display: none;
+        }
+        /* Hide the message box by default */
+        #messageBox {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg mx-auto">
+        <!-- Header Section -->
+        <div class="mb-6 text-center">
+            <!-- Updated: Red background and white text for the title -->
+            <h1 class="text-2xl font-bold text-white bg-red-600 py-2 px-4 rounded-lg inline-block sm:text-3xl">Sales Lead Form - ABP Network</h1>
+            <p class="text-gray-600 mt-2">Please enter all lead details accurately. This form will auto-update the CRM Sheet.</p>
+        </div>
+
+        <form id="dataEntryForm" class="space-y-5">
+            <!-- NEW FIRST FIELD: Channel Dropdown (Mandatory) -->
+            <div>
+                <label for="channel" class="block text-sm font-medium text-gray-700 mb-1">Channel <span class="text-red-500">*</span></label>
+                <select id="channel" name="channel" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="">Select a channel or combination</option>
+                    <option value="ABP-News">ABP-News</option>
+                    <option value="ABP-Ananda">ABP-Ananda</option>
+                    <option value="ABP-Majha">ABP-Majha</option>
+                    <option value="ABP-Asmita">ABP-Asmita</option>
+                    <option value="ABP-Digital">ABP-Digital</option>
+                    <option value="ABP-News+ABP-Ananda">ABP-News+ABP-Ananda</option>
+                    <option value="ABP-News+ABP-Majha">ABP-News+ABP-Majha</option>
+                    <option value="ABP-News+ABP-Asmita">ABP-News+ABP-Asmita</option>
+                    <option value="ABP-News+ABP-Digital">ABP-News+ABP-Digital</option>
+                    <option value="ABP-Ananda+ABP-Majha">ABP-Ananda+ABP-Majha</option>
+                    <option value="ABP-Ananda+ABP-Asmita">ABP-Ananda+ABP-Asmita</option>
+                    <option value="ABP-Ananda+ABP-Digital">ABP-Ananda+ABP-Digital</option>
+                    <option value="ABP-Majha+ABP-Asmita">ABP-Majha+ABP-Asmita</option>
+                    <option value="ABP-Majha+ABP-Digital">ABP-Majha+ABP-Digital</option>
+                    <option value="ABP-Asmita+ABP-Digital">ABP-Asmita+ABP-Digital</option>
+                    <option value="ABP-News+ABP-Ananda+ABP-Majha">ABP-News+ABP-Ananda+ABP-Majha</option>
+                    <option value="ABP-News+ABP-Ananda+ABP-Asmita">ABP-News+ABP-Ananda+ABP-Asmita</option>
+                    <option value="ABP-News+ABP-Ananda+ABP-Digital">ABP-News+ABP-Ananda+ABP-Digital</option>
+                    <option value="ABP-News+ABP-Majha+ABP-Asmita">ABP-News+ABP-Majha+ABP-Asmita</option>
+                    <option value="ABP-News+ABP-Majha+ABP-Digital">ABP-News+ABP-Majha+ABP-Digital</option>
+                    <option value="ABP-News+ABP-Asmita+ABP-Digital">ABP-News+ABP-Asmita+ABP-Digital</option>
+                    <option value="ABP-Ananda+ABP-Majha+ABP-Asmita">ABP-Ananda+ABP-Majha+ABP-Asmita</option>
+                    <option value="ABP-Ananda+ABP-Majha+ABP-Digital">ABP-Ananda+ABP-Majha+ABP-Digital</option>
+                    <option value="ABP-Ananda+ABP-Asmita+ABP-Digital">ABP-Ananda+ABP-Asmita+ABP-Digital</option>
+                    <option value="ABP-Majha+ABP-Asmita+ABP-Digital">ABP-Majha+ABP-Asmita+ABP-Digital</option>
+                    <option value="ABP-News+ABP-Ananda+ABP-Majha+ABP-Asmita">ABP-News+ABP-Ananda+ABP-Majha+ABP-Asmita</option>
+                    <option value="ABP-News+ABP-Ananda+ABP-Majha+ABP-Digital">ABP-News+ABP-Ananda+ABP-Majha+ABP-Digital</option>
+                    <option value="ABP-News+ABP-Ananda+ABP-Asmita+ABP-Digital">ABP-News+ABP-Ananda+ABP-Asmita+ABP-Digital</option>
+                    <option value="ABP-News+ABP-Majha+ABP-Asmita+ABP-Digital">ABP-News+ABP-Majha+ABP-Asmita+ABP-Digital</option>
+                    <option value="ABP-Ananda+ABP-Majha+ABP-Asmita+ABP-Digital">ABP-Ananda+ABP-Majha+ABP-Asmita+ABP-Digital</option>
+                    <option value="ABP-News+ABP-Ananda+ABP-Majha+ABP-Asmita+ABP-Digital">ABP-News+ABP-Ananda+ABP-Majha+ABP-Asmita+ABP-Digital</option>
+                </select>
+            </div>
+
+            <!-- 1. Date -->
+            <div>
+                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date <span class="text-red-500">*</span></label>
+                <input type="date" id="date" name="date" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <!-- 2. Client Name (Autocomplete Input) -->
+            <div>
+                <label for="clientName" class="block text-sm font-medium text-gray-700 mb-1">Client Name <span class="text-red-500">*</span></label>
+                <input type="text" id="clientName" name="clientName" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       list="clientNamesDatalist">
+                <datalist id="clientNamesDatalist"></datalist>
+            </div>
+
+            <!-- New: Agency Name (Autocomplete Input) -->
+            <div>
+                <label for="agencyName" class="block text-sm font-medium text-gray-700 mb-1">Agency Name <span class="text-red-500">*</span></label>
+                <input type="text" id="agencyName" name="agencyName" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       list="agencyNamesDatalist">
+                <datalist id="agencyNamesDatalist"></datalist>
+            </div>
+
+            <!-- 3. Contact Person (Now Optional) -->
+            <div>
+                <label for="contactPerson" class="block text-sm font-medium text-gray-700 mb-1">Contact Person</label>
+                <input type="text" id="contactPerson" name="contactPerson"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <!-- 4. Mobile Number (Now Optional) -->
+            <div>
+                <label for="mobileNumber" class="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
+                <input type="tel" id="mobileNumber" name="mobileNumber" pattern="^\d{10}$"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                <p id="mobileError" class="text-red-500 text-xs mt-1 hidden">Enter a valid 10-digit mobile number.</p>
+            </div>
+
+            <!-- 5. Email ID -->
+            <div>
+                <label for="emailID" class="block text-sm font-medium text-gray-700 mb-1">Email ID</label>
+                <input type="email" id="emailID" name="emailID"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <!-- 6. Platform -->
+            <div>
+                <label for="platform" class="block text-sm font-medium text-gray-700 mb-1">Platform <span class="text-red-500">*</span></label>
+                <select id="platform" name="platform" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="">Select a platform</option>
+                    <option value="TV">TV</option>
+                    <option value="Digital">Digital</option>
+                    <option value="Both">Both</option>
+                </select>
+            </div>
+
+            <!-- 7. Region -->
+            <div>
+                <label for="region" class="block text-sm font-medium text-gray-700 mb-1">Region <span class="text-red-500">*</span></label>
+                <select id="region" name="region" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="">Select a region</option>
+                    <option value="North">North</option>
+                    <option value="North States">North States</option>
+                    <option value="MP & CG">MP & CG</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="ROM">ROM</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="South">South</option>
+                </select>
+            </div>
+
+            <!-- 8. Type -->
+            <div>
+                <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Type <span class="text-red-500">*</span></label>
+                <select id="type" name="type" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="">Select a type</option>
+                    <option value="Govt.">Govt.</option>
+                    <option value="Non Govt.">Non Govt.</option>
+                </select>
+            </div>
+
+            <!-- 9. Stage -->
+            <div>
+                <label for="stage" class="block text-sm font-medium text-gray-700 mb-1">Stage <span class="text-red-500">*</span></label>
+                <select id="stage" name="stage" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <option value="">Select a stage</option>
+                    <option value="New">New</option>
+                    <option value="Called">Called</option>
+                    <option value="Proposal">Proposal</option>
+                    <option value="Negotiation">Negotiation</option>
+                    <option value="Won">Won</option>
+                    <option value="Lost">Lost</option>
+                </select>
+            </div>
+
+            <!-- 10. Next Follow-up Date -->
+            <div>
+                <label for="nextFollowUpDate" class="block text-sm font-medium text-gray-700 mb-1">Next Follow-up Date</label>
+                <input type="date" id="nextFollowUpDate" name="nextFollowUpDate"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <!-- 11. Remarks (Now Mandatory) -->
+            <div>
+                <label for="remarks" class="block text-sm font-medium text-gray-700 mb-1">Remarks <span class="text-red-500">*</span></label>
+                <textarea id="remarks" name="remarks" rows="4" required
+                          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+            </div>
+
+            <!-- 12. Your Email ID -->
+            <div>
+                <label for="yourEmailID" class="block text-sm font-medium text-gray-700 mb-1">Your Email ID <span class="text-red-500">*</span></label>
+                <input type="email" id="yourEmailID" name="yourEmailID" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <button type="submit"
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                Submit Lead
+            </button>
+        </form>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="mt-6 text-center">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
+            <p class="text-gray-600 mt-2">Submitting...</p>
+        </div>
+
+        <!-- Message Box for Success/Error -->
+        <div id="messageBox" class="mt-6 p-4 rounded-md text-sm text-center">
+            <p id="messageText"></p>
+            <button id="closeMessageBox" class="mt-2 px-3 py-1 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('dataEntryForm');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const messageBox = document.getElementById('messageBox');
+            const messageText = document.getElementById('messageText');
+            const closeMessageBox = document.getElementById('closeMessageBox');
+            const mobileNumberInput = document.getElementById('mobileNumber');
+            const mobileError = document.getElementById('mobileError');
+            const dateInput = document.getElementById('date');
+
+            // Autocomplete elements
+            const clientNameInput = document.getElementById('clientName');
+            const clientNamesDatalist = document.getElementById('clientNamesDatalist');
+            const agencyNameInput = document.getElementById('agencyName');
+            const agencyNamesDatalist = document.getElementById('agencyNamesDatalist');
+
+
+            // IMPORTANT: You MUST replace these placeholder URLs with the actual Web App URLs
+            // you get after deploying your Google Apps Script for submission and client names.
+            const GOOGLE_SHEET_SUBMIT_URL = 'https://script.google.com/a/macros/abpnetwork.com/s/AKfycbzGW6wJzRJb7yl_u_YzeqjlqUG-XjW7Hmj-h0rtw5LP7sGYMivaojtH0iYJEMf8QGS2Ww/exec';
+            const GOOGLE_SHEET_CLIENT_NAMES_URL = 'https://script.google.com/a/macros/abpnetwork.com/s/AKfycbyHyt_DBKlsoKdeZJWQi0H2Wq8INaRHgT9coPqr5lPQ5q1BYcPulKPOYjhpBuEpDSLncw/exec';
+
+
+            // Debounce function to limit API calls while typing
+            function debounce(func, delay) {
+                let timeout;
+                return function(...args) {
+                    const context = this;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(context, args), delay);
+                };
+            }
+
+            // Function to fetch suggestions (clients or agencies) and populate the datalist
+            async function fetchSuggestions(type, query, datalistElement) {
+                // Check if the URL is still a placeholder
+                if (GOOGLE_SHEET_CLIENT_NAMES_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_FOR_CLIENT_NAMES') {
+                    console.error("Error: GOOGLE_SHEET_CLIENT_NAMES_URL is still a placeholder. Please replace it with your deployed Google Apps Script URL.");
+                    datalistElement.innerHTML = '<option value="Error: Update URL"></option>';
+                    return;
+                }
+
+                try {
+                    // Pass 'type' (clients/agencies) and 'query' to the Apps Script doGet function
+                    const url = `${GOOGLE_SHEET_CLIENT_NAMES_URL}?type=${type}&query=${encodeURIComponent(query)}`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const suggestions = await response.json();
+
+                    datalistElement.innerHTML = ''; // Clear previous suggestions
+                    suggestions.forEach(item => {
+                        const option = document.createElement('option');
+                        option.value = item;
+                        datalistElement.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error(`Error fetching ${type} suggestions:`, error);
+                    datalistElement.innerHTML = '<option value="Failed to load suggestions"></option>';
+                }
+            }
+
+            // Autofill "Date" field with today's date if empty
+            function setTodayDate() {
+                if (!dateInput.value) {
+                    const today = new Date();
+                    const year = today.getFullYear();
+                    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                    const day = String(today.getDate()).padStart(2, '0');
+                    dateInput.value = `${year}-${month}-${day}`;
+                }
+            }
+
+            // Initial setup on load
+            setTodayDate();
+
+            // Attach debounced input event listeners for autocomplete
+            clientNameInput.addEventListener('input', debounce((e) => {
+                fetchSuggestions('clients', e.target.value, clientNamesDatalist);
+            }, 300)); // Fetch suggestions after 300ms of no typing
+
+            agencyNameInput.addEventListener('input', debounce((e) => {
+                fetchSuggestions('agencies', e.target.value, agencyNamesDatalist);
+            }, 300)); // Fetch suggestions after 300ms of no typing
+
+
+            // Mobile number validation feedback
+            mobileNumberInput.addEventListener('input', () => {
+                if (mobileNumberInput.validity.patternMismatch) {
+                    mobileError.textContent = 'Enter a valid 10-digit mobile number.';
+                    mobileError.classList.remove('hidden');
+                } else {
+                    mobileError.classList.add('hidden');
+                }
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Prevent default form submission
+
+                // Manual validation for mobile number (in case pattern doesn't trigger immediately)
+                if (mobileNumberInput.value && !mobileNumberInput.checkValidity()) { // Only validate if a value is entered
+                    mobileError.textContent = 'Enter a valid 10-digit mobile number.';
+                    mobileError.classList.remove('hidden');
+                    return; // Stop submission if validation fails
+                } else {
+                    mobileError.classList.add('hidden');
+                }
+
+                // Check if the submission URL is still a placeholder
+                if (GOOGLE_SHEET_SUBMIT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_FOR_SUBMISSION') {
+                    messageText.textContent = "Error: Submission URL is still a placeholder. Please replace it with your deployed Google Apps Script URL.";
+                    messageBox.className = 'mt-6 p-4 rounded-md text-sm text-center bg-red-100 text-red-800';
+                    messageBox.style.display = 'block';
+                    console.error("Error: GOOGLE_SHEET_SUBMIT_URL is still a placeholder. Please replace it with your deployed Google Apps Script URL.");
+                    return;
+                }
+
+
+                loadingSpinner.style.display = 'block'; // Show loading spinner
+                messageBox.style.display = 'none'; // Hide any previous messages
+
+                const formData = new FormData(form);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+
+                try {
+                    const response = await fetch(GOOGLE_SHEET_SUBMIT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Required for Google Apps Script web app requests
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded', // Or 'application/json' if your GAS expects JSON
+                        },
+                        body: new URLSearchParams(data).toString(), // Send as URL-encoded form data
+                    });
+
+                    // Since 'no-cors' mode is used, we can't directly read the response.
+                    // We assume success if the fetch completes without network error.
+                    // For actual error handling, the GAS would need to return specific responses.
+
+                    messageText.textContent = 'Lead submitted successfully!';
+                    messageBox.className = 'mt-6 p-4 rounded-md text-sm text-center bg-green-100 text-green-800'; // Success remains green
+                    messageBox.style.display = 'block';
+                    form.reset(); // Clear the form
+                    setTodayDate(); // Re-autofill date after reset
+
+                } catch (error) {
+                    console.error('Error submitting data:', error);
+                    messageText.textContent = 'Failed to submit lead. Please try again.';
+                    messageBox.className = 'mt-6 p-4 rounded-md text-sm text-center bg-red-100 text-red-800'; // Error is red
+                    messageBox.style.display = 'block';
+                } finally {
+                    loadingSpinner.style.display = 'none'; // Hide loading spinner
+                }
+            });
+
+            closeMessageBox.addEventListener('click', () => {
+                messageBox.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
