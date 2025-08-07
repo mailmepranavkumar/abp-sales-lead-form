@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Lead Form - ABP Network</title>
+    <title>Sales Summary - ABP Network</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -11,129 +11,162 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Basic styling for the body to center the form */
+
+        /* Dynamic, metallic gradient background with more colors */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Using the provided background image */
-            background: url('http://googleusercontent.com/file_content/3') no-repeat center center fixed;
-            background-size: cover; /* Ensure the background covers the entire area */
-            padding: 1rem; /* Add some padding for smaller screens */
+            /* A more vivid, multi-color gradient with a subtle animation */
+            background: linear-gradient(135deg, #4b0082, #ff007f, #00ffff, #ffea00, #800080);
+            background-size: 400% 400%;
+            animation: vividGradientAnimation 20s ease infinite;
+            padding: 1rem;
+            position: relative;
         }
-        /* Hide the loading spinner by default */
-        #loadingSpinner {
+
+        /* Animation keyframes for a subtle, flowing gradient effect */
+        @keyframes vividGradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* A semi-transparent overlay to make the form content more readable */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            z-index: -1;
+        }
+
+        /* Hide the loading spinner and message box by default */
+        #loadingSpinner, #messageBox {
             display: none;
         }
-        /* Hide the message box by default */
-        #messageBox {
-            display: none;
+
+        /* Glassmorphic effect for the form container */
+        .glass-form {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* Adds a subtle, colorful glow */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(255, 0, 127, 0.2);
+        }
+
+        /* Enhanced gradient on the submit button with a shadow on hover */
+        .submit-button {
+            /* A new, vibrant gradient */
+            background-image: linear-gradient(to right, #00ffff, #ffea00, #ff007f);
+            transition: all 0.3s ease;
+        }
+        .submit-button:hover {
+            /* Hover effect with a brighter, more pronounced shadow */
+            background-image: linear-gradient(to right, #ff007f, #ffea00, #00ffff);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), 0 0 40px rgba(255, 0, 127, 0.5);
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg mx-auto">
-        <!-- Header Section -->
+    <!-- Main form container with a fresh, colorful glassmorphic effect -->
+    <div class="glass-form p-8 rounded-3xl shadow-2xl w-full max-w-lg mx-auto transform transition-all duration-300">
+        <!-- Logo and Header Section -->
         <div class="mb-6 text-center">
-            <!-- Updated: Red background and white text for the title -->
-            <h1 class="text-2xl font-bold text-white bg-red-600 py-2 px-4 rounded-lg inline-block sm:text-3xl">Sales Lead Form - ABP Network</h1>
-            <p class="text-gray-600 mt-2">Please enter all lead details accurately. This form will auto-update the CRM Sheet.</p>
+            <!-- ABP Network Logo placeholder - **Replace the 'src' attribute with your logo's public URL.** -->
+            <img src="https://placehold.co/200x60/8a2be2/ffffff?text=ABP+Network" alt="ABP Network Logo" class="mx-auto mb-4 rounded-lg shadow-md">
+            
+            <!-- Header with a vibrant gradient -->
+            <h1 class="text-3xl font-extrabold text-white bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 py-3 px-6 rounded-2xl inline-block sm:text-4xl shadow-lg">Sales Summary</h1>
+            <p class="text-white mt-4 text-sm font-semibold">Please fill in the sales summary details for the deal. This will update the CRM Sheet.</p>
         </div>
 
-        <form id="dataEntryForm" class="space-y-5">
+        <form id="dataEntryForm" class="space-y-6">
+            <!-- All form elements have hover effects for a dynamic feel -->
+
             <!-- Channel Checkboxes (Multiple Selection) -->
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Channel <span class="text-red-500">*</span></label>
+                <label class="block text-sm font-medium text-white mb-2">Channel <span class="text-yellow-400">*</span></label>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    <!-- Checkbox options for Channel - color changed to red -->
                     <div class="flex items-center">
-                        <input id="channel-abp-news" name="channel" type="checkbox" value="ABP-News" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="channel-abp-news" class="ml-2 block text-sm text-gray-700">ABP-News</label>
+                        <input id="channel-abp-news" name="channel" type="checkbox" value="ABP-News" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="channel-abp-news" class="ml-2 block text-sm text-white">ABP-News</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="channel-abp-ananda" name="channel" type="checkbox" value="ABP-Ananda" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="channel-abp-ananda" class="ml-2 block text-sm text-gray-700">ABP-Ananda</label>
+                        <input id="channel-abp-ananda" name="channel" type="checkbox" value="ABP-Ananda" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="channel-abp-ananda" class="ml-2 block text-sm text-white">ABP-Ananda</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="channel-abp-majha" name="channel" type="checkbox" value="ABP-Majha" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="channel-abp-majha" class="ml-2 block text-sm text-gray-700">ABP-Majha</label>
+                        <input id="channel-abp-majha" name="channel" type="checkbox" value="ABP-Majha" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="channel-abp-majha" class="ml-2 block text-sm text-white">ABP-Majha</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="channel-abp-asmita" name="channel" type="checkbox" value="ABP-Asmita" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="channel-abp-asmita" class="ml-2 block text-sm text-gray-700">ABP-Asmita</label>
+                        <input id="channel-abp-asmita" name="channel" type="checkbox" value="ABP-Asmita" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="channel-abp-asmita" class="ml-2 block text-sm text-white">ABP-Asmita</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="channel-abp-digital" name="channel" type="checkbox" value="ABP-Digital" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="channel-abp-digital" class="ml-2 block text-sm text-gray-700">ABP-Digital</label>
+                        <input id="channel-abp-digital" name="channel" type="checkbox" value="ABP-Digital" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="channel-abp-digital" class="ml-2 block text-sm text-white">ABP-Digital</label>
                     </div>
                 </div>
             </div>
             
-            <!-- 1. Date -->
+            <!-- Other Inputs with Consistent Styling and Hover Effects -->
             <div>
-                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date <span class="text-red-500">*</span></label>
+                <label for="date" class="block text-sm font-medium text-white mb-1">Date <span class="text-yellow-400">*</span></label>
                 <input type="date" id="date" name="date" required
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
             </div>
-
-            <!-- 2. Client Name (Autocomplete Input) -->
             <div>
-                <label for="clientName" class="block text-sm font-medium text-gray-700 mb-1">Client Name <span class="text-red-500">*</span></label>
+                <label for="clientName" class="block text-sm font-medium text-white mb-1">Client Name <span class="text-yellow-400">*</span></label>
                 <input type="text" id="clientName" name="clientName" required
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                       list="clientNamesDatalist">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300"
+                        list="clientNamesDatalist">
                 <datalist id="clientNamesDatalist"></datalist>
             </div>
-
-            <!-- New: Agency Name (Autocomplete Input) -->
             <div>
-                <label for="agencyName" class="block text-sm font-medium text-gray-700 mb-1">Agency Name <span class="text-red-500">*</span></label>
+                <label for="agencyName" class="block text-sm font-medium text-white mb-1">Agency Name <span class="text-yellow-400">*</span></label>
                 <input type="text" id="agencyName" name="agencyName" required
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                       list="agencyNamesDatalist">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300"
+                        list="agencyNamesDatalist">
                 <datalist id="agencyNamesDatalist"></datalist>
             </div>
-
-            <!-- 3. Contact Person Name (Updated Label) -->
             <div>
-                <label for="contactPersonName" class="block text-sm font-medium text-gray-700 mb-1">Contact Person Name</label>
+                <label for="contactPersonName" class="block text-sm font-medium text-white mb-1">Contact Person Name</label>
                 <input type="text" id="contactPersonName" name="contactPersonName"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
             </div>
-
-            <!-- 4. Mobile Number (Now Optional) -->
             <div>
-                <label for="mobileNumber" class="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
+                <label for="mobileNumber" class="block text-sm font-medium text-white mb-1">Mobile Number</label>
                 <input type="tel" id="mobileNumber" name="mobileNumber" pattern="^\d{10}$"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                <p id="mobileError" class="text-red-500 text-xs mt-1 hidden">Enter a valid 10-digit mobile number.</p>
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
+                <p id="mobileError" class="text-yellow-400 text-xs mt-1 hidden font-bold">Enter a valid 10-digit mobile number.</p>
             </div>
-
-            <!-- 5. Email ID -->
             <div>
-                <label for="emailID" class="block text-sm font-medium text-gray-700 mb-1">Email ID</label>
+                <label for="emailID" class="block text-sm font-medium text-white mb-1">Email ID</label>
                 <input type="email" id="emailID" name="emailID"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
             </div>
-
-            <!-- 6. Platform -->
             <div>
-                <label for="platform" class="block text-sm font-medium text-gray-700 mb-1">Platform <span class="text-red-500">*</span></label>
+                <label for="platform" class="block text-sm font-medium text-white mb-1">Platform <span class="text-yellow-400">*</span></label>
                 <select id="platform" name="platform" required
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
                     <option value="">Select a platform</option>
                     <option value="TV">TV</option>
                     <option value="Digital">Digital</option>
                     <option value="Both">Both</option>
                 </select>
             </div>
-
-            <!-- 7. Region -->
             <div>
-                <label for="region" class="block text-sm font-medium text-gray-700 mb-1">Region <span class="text-red-500">*</span></label>
+                <label for="region" class="block text-sm font-medium text-white mb-1">Region <span class="text-yellow-400">*</span></label>
                 <select id="region" name="region" required
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
                     <option value="">Select a region</option>
                     <option value="North">North</option>
                     <option value="North States">North States</option>
@@ -145,45 +178,43 @@
                     <option value="South">South</option>
                 </select>
             </div>
-
-            <!-- 8. Type Checkboxes (Multiple Selection) -->
+            <!-- Type Checkboxes with Hover Effects -->
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Type <span class="text-red-500">*</span></label>
+                <label class="block text-sm font-medium text-white mb-2">Type <span class="text-yellow-400">*</span></label>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    <!-- Checkbox options for Type - color changed to red -->
                     <div class="flex items-center">
-                        <input id="type-govt" name="type" type="checkbox" value="Govt." class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="type-govt" class="ml-2 block text-sm text-gray-700">Govt.</label>
+                        <input id="type-govt" name="type" type="checkbox" value="Govt." class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="type-govt" class="ml-2 block text-sm text-white">Govt.</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="type-non-govt" name="type" type="checkbox" value="Non Govt." class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="type-non-govt" class="ml-2 block text-sm text-gray-700">Non Govt.</label>
+                        <input id="type-non-govt" name="type" type="checkbox" value="Non Govt." class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="type-non-govt" class="ml-2 block text-sm text-white">Non Govt.</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="type-nbd" name="type" type="checkbox" value="NBD" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="type-nbd" class="ml-2 block text-sm text-gray-700">NBD</label>
+                        <input id="type-nbd" name="type" type="checkbox" value="NBD" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="type-nbd" class="ml-2 block text-sm text-white">NBD</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="type-spotlight" name="type" type="checkbox" value="Spotlight" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="type-spotlight" class="ml-2 block text-sm text-gray-700">Spotlight</label>
+                        <input id="type-spotlight" name="type" type="checkbox" value="Spotlight" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="type-spotlight" class="ml-2 block text-sm text-white">Spotlight</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="type-event" name="type" type="checkbox" value="Event" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="type-event" class="ml-2 block text-sm text-gray-700">Event</label>
+                        <input id="type-event" name="type" type="checkbox" value="Event" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="type-event" class="ml-2 block text-sm text-white">Event</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="type-brand-activation" name="type" type="checkbox" value="Brand Activation" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                        <label for="type-brand-activation" class="ml-2 block text-sm text-gray-700">Brand Activation</label>
+                        <input id="type-brand-activation" name="type" type="checkbox" value="Brand Activation" class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 hover:scale-110 transition-transform">
+                        <label for="type-brand-activation" class="ml-2 block text-sm text-white">Brand Activation</label>
                     </div>
                 </div>
             </div>
             
-            <!-- NEW FIELD: Industry / Sector (Updated Datalist) -->
+            <!-- Industry / Sector with Consistent Styling and Hover Effects -->
             <div>
-                <label for="industrySector" class="block text-sm font-medium text-gray-700 mb-1">Industry / Sector <span class="text-red-500">*</span></label>
+                <label for="industrySector" class="block text-sm font-medium text-white mb-1">Industry / Sector <span class="text-yellow-400">*</span></label>
                 <input type="text" id="industrySector" name="industrySector" required
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                       list="industrySectorsDatalist" placeholder="e.g., FMCG, Automotive">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300"
+                        list="industrySectorsDatalist" placeholder="e.g., FMCG, Automotive">
                 <datalist id="industrySectorsDatalist">
                     <option value="FMCG">
                     <option value="Automotive">
@@ -205,12 +236,11 @@
                     <option value="Logistics & Supply Chain">
                 </datalist>
             </div>
-
-            <!-- 9. Stage (Updated Options) -->
+            <!-- Stage Dropdown with Hover Effects -->
             <div>
-                <label for="stage" class="block text-sm font-medium text-gray-700 mb-1">Stage <span class="text-red-500">*</span></label>
+                <label for="stage" class="block text-sm font-medium text-white mb-1">Stage <span class="text-yellow-400">*</span></label>
                 <select id="stage" name="stage" required
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
                     <option value="">Select a stage</option>
                     <option value="Lead">Lead</option>
                     <option value="Qualified">Qualified</option>
@@ -220,79 +250,71 @@
                     <option value="Lost">Lost</option>
                 </select>
             </div>
-
-            <!-- NEW FIELD: Deal Value in Lakhs -->
+            <!-- Deal Value, Campaign Dates, and Next Follow-up Date -->
             <div>
-                <label for="dealValueInLakhs" class="block text-sm font-medium text-gray-700 mb-1">Deal Value in Lakhs <span class="text-red-500">*</span></label>
+                <label for="dealValueInLakhs" class="block text-sm font-medium text-white mb-1">Deal Value in Lakhs <span class="text-yellow-400">*</span></label>
                 <input type="number" id="dealValueInLakhs" name="dealValueInLakhs" required min="0" step="any"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                       placeholder="e.g., 5.5 for 5.5 Lakhs">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300"
+                        placeholder="e.g., 5.5 for 5.5 Lakhs">
             </div>
-            
-            <!-- NEW FIELD: Campaign Start Date -->
             <div>
-                <label for="campaignStartDate" class="block text-sm font-medium text-gray-700 mb-1">Campaign Start Date</label>
+                <label for="campaignStartDate" class="block text-sm font-medium text-white mb-1">Campaign Start Date</label>
                 <input type="date" id="campaignStartDate" name="campaignStartDate"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
             </div>
-
-            <!-- NEW FIELD: Campaign End Date -->
             <div>
-                <label for="campaignEndDate" class="block text-sm font-medium text-gray-700 mb-1">Campaign End Date</label>
+                <label for="campaignEndDate" class="block text-sm font-medium text-white mb-1">Campaign End Date</label>
                 <input type="date" id="campaignEndDate" name="campaignEndDate"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
             </div>
-
-            <!-- 10. Next Follow-up Date -->
             <div>
-                <label for="nextFollowUpDate" class="block text-sm font-medium text-gray-700 mb-1">Next Follow-up Date</label>
+                <label for="nextFollowUpDate" class="block text-sm font-medium text-white mb-1">Next Follow-up Date</label>
                 <input type="date" id="nextFollowUpDate" name="nextFollowUpDate"
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
             </div>
             
-            <!-- NEW FIELD: Follow-up Status -->
+            <!-- Follow-up Status with Hover Effects -->
             <fieldset>
-                <legend class="block text-sm font-medium text-gray-700 mb-1">Follow-up Status</legend>
+                <legend class="block text-sm font-medium text-white mb-1">Follow-up Status</legend>
                 <div class="mt-2 space-y-2">
                     <div class="flex items-center">
-                        <input id="followUpStatus-pending" name="followUpStatus" type="radio" value="Pending" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                        <label for="followUpStatus-pending" class="ml-2 block text-sm text-gray-700">Pending</label>
+                        <input id="followUpStatus-pending" name="followUpStatus" type="radio" value="Pending" class="h-4 w-4 text-green-500 border-gray-300 focus:ring-green-400 hover:scale-110 transition-transform">
+                        <label for="followUpStatus-pending" class="ml-2 block text-sm text-white">Pending</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="followUpStatus-completed" name="followUpStatus" type="radio" value="Completed" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                        <label for="followUpStatus-completed" class="ml-2 block text-sm text-gray-700">Completed</label>
+                        <input id="followUpStatus-completed" name="followUpStatus" type="radio" value="Completed" class="h-4 w-4 text-green-500 border-gray-300 focus:ring-green-400 hover:scale-110 transition-transform">
+                        <label for="followUpStatus-completed" class="ml-2 block text-sm text-white">Completed</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="followUpStatus-not-required" name="followUpStatus" type="radio" value="Not Required" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                        <label for="followUpStatus-not-required" class="ml-2 block text-sm text-gray-700">Not Required</label>
+                        <input id="followUpStatus-not-required" name="followUpStatus" type="radio" value="Not Required" class="h-4 w-4 text-green-500 border-gray-300 focus:ring-green-400 hover:scale-110 transition-transform">
+                        <label for="followUpStatus-not-required" class="ml-2 block text-sm text-white">Not Required</label>
                     </div>
                 </div>
             </fieldset>
 
-            <!-- 11. Remarks (Now Mandatory) -->
+            <!-- Remarks with Hover Effects -->
             <div>
-                <label for="remarks" class="block text-sm font-medium text-gray-700 mb-1">Remarks <span class="text-red-500">*</span></label>
+                <label for="remarks" class="block text-sm font-medium text-white mb-1">Remarks <span class="text-yellow-400">*</span></label>
                 <textarea id="remarks" name="remarks" rows="4" required
-                          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Add any notes here. If this is a new business development lead, please mention it."></textarea>
+                              class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300" placeholder="Add any notes here. If this is a new business development lead, please mention it."></textarea>
             </div>
-
-            <!-- 12. Your Email ID -->
+            <!-- Your Email ID with Hover Effects -->
             <div>
-                <label for="yourEmailID" class="block text-sm font-medium text-gray-700 mb-1">Your Email ID <span class="text-red-500">*</span></label>
+                <label for="yourEmailID" class="block text-sm font-medium text-white mb-1">Your Email ID <span class="text-yellow-400">*</span></label>
                 <input type="email" id="yourEmailID" name="yourEmailID" required
-                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
             </div>
 
-            <button type="submit"
-                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+            <!-- Submit button with a vibrant gradient and hover animation -->
+            <button type="submit" class="w-full flex justify-center py-3 px-6 border border-transparent rounded-full shadow-lg text-lg font-bold text-white submit-button focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400">
                 Submit Lead
             </button>
         </form>
 
         <!-- Loading Spinner -->
         <div id="loadingSpinner" class="mt-6 text-center">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
-            <p class="text-gray-600 mt-2">Submitting...</p>
+            <div class="animate-spin rounded-full h-8 w-8 border-b-4 border-white mx-auto"></div>
+            <p class="text-white mt-2">Submitting...</p>
         </div>
 
         <!-- Message Box for Success/Error -->
@@ -319,12 +341,10 @@
             const agencyNameInput = document.getElementById('agencyName');
             const agencyNamesDatalist = document.getElementById('agencyNamesDatalist');
 
-
             // IMPORTANT: You MUST replace these placeholder URLs with the actual Web App URLs
             // you get after deploying your Google Apps Script for submission and client names.
             const GOOGLE_SHEET_SUBMIT_URL = 'https://script.google.com/a/macros/abpnetwork.com/s/AKfycbzGW6wJzRJb7yl_u_YzeqjlqUG-XjW7Hmj-h0rtw5LP7sGYMivaojtH0iYJEMf8QGS2Ww/exec';
             const GOOGLE_SHEET_CLIENT_NAMES_URL = 'https://script.google.com/a/macros/abpnetwork.com/s/AKfycbyHyt_DBKlsoKdeZJWQi0H2Wq8INaRHgT9coPqr5lPQ5q1BYcPulKPOYjhpBuEpDSLncw/exec';
-
 
             // Debounce function to limit API calls while typing
             function debounce(func, delay) {
