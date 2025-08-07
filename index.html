@@ -14,7 +14,7 @@
         /* Basic styling for the body to center the form */
         body {
             display: flex;
-            justify-content.center;
+            justify-content: center;
             align-items: center;
             min-height: 100vh;
             /* Using the provided background image */
@@ -42,46 +42,34 @@
         </div>
 
         <form id="dataEntryForm" class="space-y-5">
-            <!-- NEW FIRST FIELD: Channel Dropdown (Mandatory) -->
+            <!-- Channel Checkboxes (Multiple Selection) -->
             <div>
-                <label for="channel" class="block text-sm font-medium text-gray-700 mb-1">Channel <span class="text-red-500">*</span></label>
-                <select id="channel" name="channel" required
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    <option value="">Select a channel or combination</option>
-                    <option value="ABP-News">ABP-News</option>
-                    <option value="ABP-Ananda">ABP-Ananda</option>
-                    <option value="ABP-Majha">ABP-Majha</option>
-                    <option value="ABP-Asmita">ABP-Asmita</option>
-                    <option value="ABP-Digital">ABP-Digital</option>
-                    <option value="ABP-News+ABP-Ananda">ABP-News+ABP-Ananda</option>
-                    <option value="ABP-News+ABP-Majha">ABP-News+ABP-Majha</option>
-                    <option value="ABP-News+ABP-Asmita">ABP-News+ABP-Asmita</option>
-                    <option value="ABP-News+ABP-Digital">ABP-News+ABP-Digital</option>
-                    <option value="ABP-Ananda+ABP-Majha">ABP-Ananda+ABP-Majha</option>
-                    <option value="ABP-Ananda+ABP-Asmita">ABP-Ananda+ABP-Asmita</option>
-                    <option value="ABP-Ananda+ABP-Digital">ABP-Ananda+ABP-Digital</option>
-                    <option value="ABP-Majha+ABP-Asmita">ABP-Majha+ABP-Asmita</option>
-                    <option value="ABP-Majha+ABP-Digital">ABP-Majha+ABP-Digital</option>
-                    <option value="ABP-Asmita+ABP-Digital">ABP-Asmita+ABP-Digital</option>
-                    <option value="ABP-News+ABP-Ananda+ABP-Majha">ABP-News+ABP-Ananda+ABP-Majha</option>
-                    <option value="ABP-News+ABP-Ananda+ABP-Asmita">ABP-News+ABP-Ananda+ABP-Asmita</option>
-                    <option value="ABP-News+ABP-Ananda+ABP-Digital">ABP-News+ABP-Ananda+ABP-Digital</option>
-                    <option value="ABP-News+ABP-Majha+ABP-Asmita">ABP-News+ABP-Majha+ABP-Asmita</option>
-                    <option value="ABP-News+ABP-Majha+ABP-Digital">ABP-News+ABP-Majha+ABP-Digital</option>
-                    <option value="ABP-News+ABP-Asmita+ABP-Digital">ABP-News+ABP-Asmita+ABP-Digital</option>
-                    <option value="ABP-Ananda+ABP-Majha+ABP-Asmita">ABP-Ananda+ABP-Majha+ABP-Asmita</option>
-                    <option value="ABP-Ananda+ABP-Majha+ABP-Digital">ABP-Ananda+ABP-Majha+ABP-Digital</option>
-                    <option value="ABP-Ananda+ABP-Asmita+ABP-Digital">ABP-Ananda+ABP-Asmita+ABP-Digital</option>
-                    <option value="ABP-Majha+ABP-Asmita+ABP-Digital">ABP-Majha+ABP-Asmita+ABP-Digital</option>
-                    <option value="ABP-News+ABP-Ananda+ABP-Majha+ABP-Asmita">ABP-News+ABP-Ananda+ABP-Majha+ABP-Asmita</option>
-                    <option value="ABP-News+ABP-Ananda+ABP-Majha+ABP-Digital">ABP-News+ABP-Ananda+ABP-Majha+ABP-Digital</option>
-                    <option value="ABP-News+ABP-Ananda+ABP-Asmita+ABP-Digital">ABP-News+ABP-Ananda+ABP-Asmita+ABP-Digital</option>
-                    <option value="ABP-News+ABP-Majha+ABP-Asmita+ABP-Digital">ABP-News+ABP-Majha+ABP-Asmita+ABP-Digital</option>
-                    <option value="ABP-Ananda+ABP-Majha+ABP-Asmita+ABP-Digital">ABP-Ananda+ABP-Majha+ABP-Asmita+ABP-Digital</option>
-                    <option value="ABP-News+ABP-Ananda+ABP-Majha+ABP-Asmita+ABP-Digital">ABP-News+ABP-Ananda+ABP-Majha+ABP-Asmita+ABP-Digital</option>
-                </select>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Channel <span class="text-red-500">*</span></label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <!-- Checkbox options for Channel - color changed to red -->
+                    <div class="flex items-center">
+                        <input id="channel-abp-news" name="channel" type="checkbox" value="ABP-News" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="channel-abp-news" class="ml-2 block text-sm text-gray-700">ABP-News</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="channel-abp-ananda" name="channel" type="checkbox" value="ABP-Ananda" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="channel-abp-ananda" class="ml-2 block text-sm text-gray-700">ABP-Ananda</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="channel-abp-majha" name="channel" type="checkbox" value="ABP-Majha" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="channel-abp-majha" class="ml-2 block text-sm text-gray-700">ABP-Majha</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="channel-abp-asmita" name="channel" type="checkbox" value="ABP-Asmita" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="channel-abp-asmita" class="ml-2 block text-sm text-gray-700">ABP-Asmita</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="channel-abp-digital" name="channel" type="checkbox" value="ABP-Digital" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="channel-abp-digital" class="ml-2 block text-sm text-gray-700">ABP-Digital</label>
+                    </div>
+                </div>
             </div>
-
+            
             <!-- 1. Date -->
             <div>
                 <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date <span class="text-red-500">*</span></label>
@@ -107,10 +95,10 @@
                 <datalist id="agencyNamesDatalist"></datalist>
             </div>
 
-            <!-- 3. Contact Person (Now Optional) -->
+            <!-- 3. Contact Person Name (Updated Label) -->
             <div>
-                <label for="contactPerson" class="block text-sm font-medium text-gray-700 mb-1">Contact Person</label>
-                <input type="text" id="contactPerson" name="contactPerson"
+                <label for="contactPersonName" class="block text-sm font-medium text-gray-700 mb-1">Contact Person Name</label>
+                <input type="text" id="contactPersonName" name="contactPersonName"
                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
 
@@ -158,30 +146,101 @@
                 </select>
             </div>
 
-            <!-- 8. Type -->
+            <!-- 8. Type Checkboxes (Multiple Selection) -->
             <div>
-                <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Type <span class="text-red-500">*</span></label>
-                <select id="type" name="type" required
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    <option value="">Select a type</option>
-                    <option value="Govt.">Govt.</option>
-                    <option value="Non Govt.">Non Govt.</option>
-                </select>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Type <span class="text-red-500">*</span></label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <!-- Checkbox options for Type - color changed to red -->
+                    <div class="flex items-center">
+                        <input id="type-govt" name="type" type="checkbox" value="Govt." class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="type-govt" class="ml-2 block text-sm text-gray-700">Govt.</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="type-non-govt" name="type" type="checkbox" value="Non Govt." class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="type-non-govt" class="ml-2 block text-sm text-gray-700">Non Govt.</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="type-nbd" name="type" type="checkbox" value="NBD" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="type-nbd" class="ml-2 block text-sm text-gray-700">NBD</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="type-spotlight" name="type" type="checkbox" value="Spotlight" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="type-spotlight" class="ml-2 block text-sm text-gray-700">Spotlight</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="type-event" name="type" type="checkbox" value="Event" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="type-event" class="ml-2 block text-sm text-gray-700">Event</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="type-brand-activation" name="type" type="checkbox" value="Brand Activation" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                        <label for="type-brand-activation" class="ml-2 block text-sm text-gray-700">Brand Activation</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NEW FIELD: Industry / Sector (Updated Datalist) -->
+            <div>
+                <label for="industrySector" class="block text-sm font-medium text-gray-700 mb-1">Industry / Sector <span class="text-red-500">*</span></label>
+                <input type="text" id="industrySector" name="industrySector" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       list="industrySectorsDatalist" placeholder="e.g., FMCG, Automotive">
+                <datalist id="industrySectorsDatalist">
+                    <option value="FMCG">
+                    <option value="Automotive">
+                    <option value="BFSI (Banking, Financial Services, and Insurance)">
+                    <option value="Real Estate & Infrastructure">
+                    <option value="Education & Ed-tech">
+                    <option value="Telecom & Technology">
+                    <option value="E-commerce & Retail">
+                    <option value="Government & PSUs">
+                    <option value="Healthcare & Pharma">
+                    <option value="Media & Entertainment">
+                    <option value="Consumer Durables & Electronics">
+                    <option value="Travel & Hospitality">
+                    <option value="Food & Beverages">
+                    <option value="Jewellery & Lifestyle">
+                    <option value="Gaming & Esports">
+                    <option value="Energy & Utilities">
+                    <option value="Agriculture">
+                    <option value="Logistics & Supply Chain">
+                </datalist>
             </div>
 
-            <!-- 9. Stage -->
+            <!-- 9. Stage (Updated Options) -->
             <div>
                 <label for="stage" class="block text-sm font-medium text-gray-700 mb-1">Stage <span class="text-red-500">*</span></label>
                 <select id="stage" name="stage" required
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                     <option value="">Select a stage</option>
-                    <option value="New">New</option>
-                    <option value="Called">Called</option>
-                    <option value="Proposal">Proposal</option>
+                    <option value="Lead">Lead</option>
+                    <option value="Qualified">Qualified</option>
+                    <option value="Proposal Sent">Proposal Sent</option>
                     <option value="Negotiation">Negotiation</option>
                     <option value="Won">Won</option>
                     <option value="Lost">Lost</option>
                 </select>
+            </div>
+
+            <!-- NEW FIELD: Deal Value in Lakhs -->
+            <div>
+                <label for="dealValueInLakhs" class="block text-sm font-medium text-gray-700 mb-1">Deal Value in Lakhs <span class="text-red-500">*</span></label>
+                <input type="number" id="dealValueInLakhs" name="dealValueInLakhs" required min="0" step="any"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                       placeholder="e.g., 5.5 for 5.5 Lakhs">
+            </div>
+            
+            <!-- NEW FIELD: Campaign Start Date -->
+            <div>
+                <label for="campaignStartDate" class="block text-sm font-medium text-gray-700 mb-1">Campaign Start Date</label>
+                <input type="date" id="campaignStartDate" name="campaignStartDate"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <!-- NEW FIELD: Campaign End Date -->
+            <div>
+                <label for="campaignEndDate" class="block text-sm font-medium text-gray-700 mb-1">Campaign End Date</label>
+                <input type="date" id="campaignEndDate" name="campaignEndDate"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
 
             <!-- 10. Next Follow-up Date -->
@@ -190,12 +249,31 @@
                 <input type="date" id="nextFollowUpDate" name="nextFollowUpDate"
                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
+            
+            <!-- NEW FIELD: Follow-up Status -->
+            <fieldset>
+                <legend class="block text-sm font-medium text-gray-700 mb-1">Follow-up Status</legend>
+                <div class="mt-2 space-y-2">
+                    <div class="flex items-center">
+                        <input id="followUpStatus-pending" name="followUpStatus" type="radio" value="Pending" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="followUpStatus-pending" class="ml-2 block text-sm text-gray-700">Pending</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="followUpStatus-completed" name="followUpStatus" type="radio" value="Completed" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="followUpStatus-completed" class="ml-2 block text-sm text-gray-700">Completed</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="followUpStatus-not-required" name="followUpStatus" type="radio" value="Not Required" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="followUpStatus-not-required" class="ml-2 block text-sm text-gray-700">Not Required</label>
+                    </div>
+                </div>
+            </fieldset>
 
             <!-- 11. Remarks (Now Mandatory) -->
             <div>
                 <label for="remarks" class="block text-sm font-medium text-gray-700 mb-1">Remarks <span class="text-red-500">*</span></label>
                 <textarea id="remarks" name="remarks" rows="4" required
-                          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Add any notes here. If this is a new business development lead, please mention it."></textarea>
             </div>
 
             <!-- 12. Your Email ID -->
@@ -314,10 +392,7 @@
 
             // Mobile number validation feedback
             mobileNumberInput.addEventListener('input', () => {
-                if (mobileNumberInput.validity.patternMismatch) {
-                    mobileError.textContent = 'Enter a valid 10-digit mobile number.';
-                    mobileError.classList.remove('hidden');
-                } else {
+                if (mobileNumberInput.value && mobileNumberInput.checkValidity()) {
                     mobileError.classList.add('hidden');
                 }
             });
@@ -343,14 +418,25 @@
                     return;
                 }
 
-
                 loadingSpinner.style.display = 'block'; // Show loading spinner
                 messageBox.style.display = 'none'; // Hide any previous messages
 
                 const formData = new FormData(form);
                 const data = {};
+
+                // Process checkboxes for 'channel' and 'type'
+                const channelValues = formData.getAll('channel');
+                data['channel'] = channelValues.join(', ');
+
+                const typeValues = formData.getAll('type');
+                data['type'] = typeValues.join(', ');
+
+                // Process other form fields
                 for (let [key, value] of formData.entries()) {
-                    data[key] = value;
+                    // Skip the checkbox names as they are already processed
+                    if (key !== 'channel' && key !== 'type') {
+                        data[key] = value;
+                    }
                 }
 
                 try {
@@ -358,7 +444,7 @@
                         method: 'POST',
                         mode: 'no-cors', // Required for Google Apps Script web app requests
                         headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded', // Or 'application/json' if your GAS expects JSON
+                            'Content-Type': 'application/x-www-form-urlencoded',
                         },
                         body: new URLSearchParams(data).toString(), // Send as URL-encoded form data
                     });
