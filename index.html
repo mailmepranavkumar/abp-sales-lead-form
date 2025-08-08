@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Summary - ABP Network</title>
+    <title>Daily Sales Summary - ABP Network</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -83,7 +83,8 @@
             <img src="https://placehold.co/200x60/8a2be2/ffffff?text=ABP+Network" alt="ABP Network Logo" class="mx-auto mb-4 rounded-lg shadow-md">
             
             <!-- Header with a vibrant gradient -->
-            <h1 class="text-3xl font-extrabold text-white bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 py-3 px-6 rounded-2xl inline-block sm:text-4xl shadow-lg">Sales Summary</h1>
+            <!-- Renamed the title and adjusted font size as requested -->
+            <h1 class="text-xl font-extrabold text-white bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 py-3 px-6 rounded-2xl inline-block sm:text-2xl shadow-lg">Daily Sales Summary</h1>
             <p class="text-white mt-4 text-sm font-semibold">Please fill in the sales summary details for the deal. This will update the CRM Sheet.</p>
         </div>
 
@@ -156,7 +157,7 @@
             <div>
                 <label for="platform" class="block text-sm font-medium text-white mb-1">Platform <span class="text-yellow-400">*</span></label>
                 <select id="platform" name="platform" required
-                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
                     <option value="">Select a platform</option>
                     <option value="TV">TV</option>
                     <option value="Digital">Digital</option>
@@ -166,7 +167,7 @@
             <div>
                 <label for="region" class="block text-sm font-medium text-white mb-1">Region <span class="text-yellow-400">*</span></label>
                 <select id="region" name="region" required
-                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
                     <option value="">Select a region</option>
                     <option value="North">North</option>
                     <option value="North States">North States</option>
@@ -240,7 +241,7 @@
             <div>
                 <label for="stage" class="block text-sm font-medium text-white mb-1">Stage <span class="text-yellow-400">*</span></label>
                 <select id="stage" name="stage" required
-                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
                     <option value="">Select a stage</option>
                     <option value="Lead">Lead</option>
                     <option value="Qualified">Qualified</option>
@@ -296,13 +297,14 @@
             <div>
                 <label for="remarks" class="block text-sm font-medium text-white mb-1">Remarks <span class="text-yellow-400">*</span></label>
                 <textarea id="remarks" name="remarks" rows="4" required
-                              class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300" placeholder="Add any notes here. If this is a new business development lead, please mention it."></textarea>
+                                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300" placeholder="Add any notes here. If this is a new business development lead, please mention it."></textarea>
             </div>
-            <!-- Your Email ID with Hover Effects -->
+            <!-- Your Email ID with Validation and Hover Effects -->
             <div>
                 <label for="yourEmailID" class="block text-sm font-medium text-white mb-1">Your Email ID <span class="text-yellow-400">*</span></label>
                 <input type="email" id="yourEmailID" name="yourEmailID" required
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-transparent sm:text-sm transition-all duration-200 focus:shadow-md hover:border-cyan-300">
+                <p id="yourEmailIdError" class="text-red-400 text-xs mt-1 hidden font-bold">invalid mail id</p>
             </div>
 
             <!-- Submit button with a vibrant gradient and hover animation -->
@@ -334,6 +336,10 @@
             const mobileNumberInput = document.getElementById('mobileNumber');
             const mobileError = document.getElementById('mobileError');
             const dateInput = document.getElementById('date');
+            
+            // New email validation elements
+            const yourEmailIDInput = document.getElementById('yourEmailID');
+            const yourEmailIdError = document.getElementById('yourEmailIdError');
 
             // Autocomplete elements
             const clientNameInput = document.getElementById('clientName');
@@ -417,17 +423,47 @@
                 }
             });
 
+            // New: Email validation on blur event
+            yourEmailIDInput.addEventListener('blur', () => {
+                const email = yourEmailIDInput.value;
+                if (email && !email.toLowerCase().endsWith('@abpnetwork.com')) {
+                    yourEmailIdError.classList.remove('hidden');
+                } else {
+                    yourEmailIdError.classList.add('hidden');
+                }
+            });
+
             form.addEventListener('submit', async (e) => {
                 e.preventDefault(); // Prevent default form submission
 
-                // Manual validation for mobile number (in case pattern doesn't trigger immediately)
-                if (mobileNumberInput.value && !mobileNumberInput.checkValidity()) { // Only validate if a value is entered
+                // --- START Validation checks ---
+                let isValid = true;
+
+                // Manual validation for mobile number
+                if (mobileNumberInput.value && !mobileNumberInput.checkValidity()) {
                     mobileError.textContent = 'Enter a valid 10-digit mobile number.';
                     mobileError.classList.remove('hidden');
-                    return; // Stop submission if validation fails
+                    isValid = false;
                 } else {
                     mobileError.classList.add('hidden');
                 }
+
+                // New: Validation for Your Email ID
+                const yourEmail = yourEmailIDInput.value;
+                if (!yourEmail || !yourEmail.toLowerCase().endsWith('@abpnetwork.com')) {
+                    yourEmailIdError.textContent = 'invalid mail id';
+                    yourEmailIdError.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    yourEmailIdError.classList.add('hidden');
+                }
+
+                // If any validation fails, stop the submission
+                if (!isValid) {
+                    return;
+                }
+                // --- END Validation checks ---
+
 
                 // Check if the submission URL is still a placeholder
                 if (GOOGLE_SHEET_SUBMIT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_FOR_SUBMISSION') {
